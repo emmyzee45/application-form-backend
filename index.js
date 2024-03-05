@@ -42,6 +42,7 @@ app.post("/application", upload.single('file'), async(req, res) => {
         const fileContent = fs.readFileSync(filePath);
 
         sendMail({ job, name,gender,address,country,city,qualification,birthday, CV: fileContent });
+        // if(!msg) return res.status(404).json("something went wrong!");
         res.status(200).json('PDF uploaded successfully')
     }catch(err) {
         res.status(500).json(err);

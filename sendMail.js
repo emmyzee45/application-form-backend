@@ -18,7 +18,7 @@ module.exports = function sendNotification(application) {
     // Email content
     const mailOptions = {
       from: `no_reply ${process.env.EMAIL_USER}`,
-      to: "emmyaondohemba45@gmail.com",
+      to: process.env.EMAIL_USER,
       subject: `${application.job } Application`,
       text: `${application.job}`,
       attachments: [
@@ -34,8 +34,10 @@ module.exports = function sendNotification(application) {
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
         console.error('Error sending email:', error);
+        // return error;
       } else {
         console.log('Email sent:', info.response);
+        // return true;
       }
     });
   }
